@@ -18,7 +18,7 @@ The word **memory** in this document means information stored by a mathematical 
 
 ## Quick glossary
 
-- **AP$_{30}$**: a motor-threshold measure obtained with a 30-microsecond anterior-posterior TMS pulse.
+- **$AP_{30}$**: a motor-threshold measure obtained with a 30-microsecond anterior-posterior TMS pulse.
 - **TMS**: transcranial magnetic stimulation.
 - **RMSE**: root mean square error, a measure of the size of prediction errors.
 - **NLL**: negative log-likelihood, a measure of how much probability a model assigns to observed outcomes.
