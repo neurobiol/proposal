@@ -267,9 +267,7 @@ Definitions:
 
 Each classical predictive state $s$ is represented by a normalized quantum state
 
-$$
-\lvert\sigma_s\rangle.
-$$
+$$\lvert\sigma_s\rangle.$$
 
 Definitions:
 
@@ -284,11 +282,7 @@ The use of quantum states is a mathematical representation. It does not assume t
 
 For classical state $s$ and input $x$, define
 
-$$
-\lvert\sigma_s^x\rangle
-=
-\sum_{y,s'}\sqrt{T_{ss'}^{y\mid x}}\,\lvert y\rangle\lvert s'\rangle.
-$$
+$$\lvert\sigma_s^x\rangle = \sum_{y,s'}\sqrt{T_{ss'}^{y\mid x}}\,\lvert y\rangle\lvert s'\rangle.$$
 
 Definitions:
 
@@ -302,11 +296,7 @@ Definitions:
 
 All allowed inputs are combined as
 
-$$
-\lvert\sigma_s\rangle
-=
-\bigotimes_{x\in\mathcal X}\lvert\sigma_s^x\rangle.
-$$
+$$\lvert\sigma_s\rangle=\bigotimes_{x\in\mathcal X}\lvert\sigma_s^x\rangle.$$
 
 Definitions:
 
@@ -319,13 +309,7 @@ Definitions:
 
 The overlap between states $r$ and $s$ is
 
-$$
-\langle\sigma_r\mid\sigma_s\rangle
-=
-\prod_{x\in\mathcal X}
-\sum_{y,s'}
-\sqrt{T_{rs'}^{y\mid x}T_{ss'}^{y\mid x}}.
-$$
+$$\langle\sigma_r\mid\sigma_s\rangle=\prod_{x\in\mathcal X}\sum_{y,s'}\sqrt{T_{rs'}^{y\mid x}T_{ss'}^{y\mid x}}.$$
 
 Definitions:
 
@@ -337,9 +321,7 @@ Definitions:
 
 The matrix containing all pairwise overlaps is the **Gram matrix**:
 
-$$
-G_{rs}=\langle\sigma_r\mid\sigma_s\rangle.
-$$
+$$G_{rs}=\langle\sigma_r\mid\sigma_s\rangle.$$
 
 Definitions:
 
@@ -353,9 +335,7 @@ Definitions:
 
 At trial $t$, the average quantum memory state is
 
-$$
-\rho_t=\sum_s\pi_t(s)\lvert\sigma_s\rangle\langle\sigma_s\rvert.
-$$
+$$\rho_t=\sum_s\pi_t(s)\lvert\sigma_s\rangle\langle\sigma_s\rvert.$$
 
 Definitions:
 
@@ -370,9 +350,7 @@ A valid density matrix must have trace one and non-negative eigenvalues. The tra
 
 Quantum memory is the von Neumann entropy
 
-$$
-C_q(t)=-\operatorname{Tr}\!\left[\rho_t\log_2\rho_t\right].
-$$
+$$C_q(t)=-\operatorname{Tr}\!\left[\rho_t\log_2\rho_t\right].$$
 
 Definitions:
 
@@ -384,9 +362,7 @@ Definitions:
 
 In practice, if $\lambda_k(t)$ are the eigenvalues of $\rho_t$, the same quantity is
 
-$$
-C_q(t)=-\sum_k\lambda_k(t)\log_2\lambda_k(t).
-$$
+$$C_q(t)=-\sum_k\lambda_k(t)\log_2\lambda_k(t).$$
 
 Definitions:
 
@@ -396,9 +372,7 @@ Definitions:
 
 The average quantum memory is
 
-$$
-\overline{C}_q=\frac{1}{T}\sum_{t=1}^{T}C_q(t).
-$$
+$$\overline{C}_q=\frac{1}{T}\sum_{t=1}^{T}C_q(t).$$
 
 It is averaged over the same trial positions as $\overline{C}_{\mu}$.
 
@@ -425,9 +399,7 @@ A held-out participant never influences the bin boundaries or model settings use
 
 All off-diagonal overlaps are set to zero:
 
-$$
-G_{ss'}=0\quad\text{for }s\neq s'.
-$$
+$$G_{ss'}=0\quad\text{for }s\neq s'.$$
 
 Definitions:
 
@@ -457,9 +429,7 @@ A primary quantum memory advantage requires both conditions below:
 1. The quantum representation reproduces the selected classical process's output probabilities within numerical tolerance.
 2. The 95 percent participant-bootstrap confidence interval for
 
-$$
-\overline{C}_{\mu}-\overline{C}_q
-$$
+$$\overline{C}_{\mu}-\overline{C}_q$$
 
 lies entirely above zero.
 
@@ -504,7 +474,7 @@ Before interpreting real-data results, the software must pass the following chec
 
 ---
 
-## 12. Plain-language interpretation of possible results
+## 12. Interpretation of possible results
 
 ### Quantum memory is lower
 
