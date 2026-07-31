@@ -2,9 +2,9 @@
 
 ## 1. Purpose of this guide
 
-This document explains the mathematics used in the proposal **Quantum Predictive Modelling of Human Sensorimotor Learning**. It is written for readers from biology, psychology, mathematics, engineering, and related fields.
+This document explains the mathematics used in the proposal **Quantum Predictive Modelling of Human Sensorimotor Learning**. 
 
-The central question is simple:
+The central question is:
 
 > What is the smallest amount of information about a participant's past practice that is needed to predict future learning and delayed retention?
 
