@@ -350,15 +350,15 @@ A valid density matrix must have trace one and non-negative eigenvalues. The tra
 
 Quantum memory is the von Neumann entropy
 
-$$C_q(t)=-Tr\!\left[\rho_t\log_2\rho_t\right].$$
+$$C_q(t)=-\mathrm{Tr}!\left[\rho_t\log_2\rho_t\right].$$
 
 Definitions:
 
-- $C_q(t)$ is quantum predictive memory at trial $t$.
-- $q$ denotes the quantum representation.
-- $\operatorname{Tr}$ is the matrix trace.
-- $\log_2\rho_t$ is the matrix logarithm with base 2.
-- The unit is qubits.
+* $C_q(t)$ is quantum predictive memory at trial $t$.
+* $q$ denotes the quantum representation.
+* $\mathrm{Tr}$ is the matrix trace.
+* $\log_2\rho_t$ is the base-2 matrix logarithm.
+* The unit is qubits.
 
 In practice, if $\lambda_k(t)$ are the eigenvalues of $\rho_t$, the same quantity is
 
