@@ -350,7 +350,7 @@ A valid density matrix must have trace one and non-negative eigenvalues. The tra
 
 Quantum memory is the von Neumann entropy
 
-$$C_q(t)=-\operatorname{Tr}\!\left[\rho_t\log_2\rho_t\right].$$
+$$C_q(t)=-Tr\!\left[\rho_t\log_2\rho_t\right].$$
 
 Definitions:
 
