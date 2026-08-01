@@ -408,9 +408,9 @@ Definitions:
 
 This control keeps the fitted transition probabilities but removes quantum overlap. It must recover the classical predictive memory.
 
-### 8.2 Matched-memory or matched-rank comparison
+### 8.2 Matched-memory approximation comparison
 
-Low-dimensional classical and quantum approximations will be compared under the same supported memory size. Rank means the number of independent directions needed to represent a state mixture. This analysis is secondary because equal rank does not guarantee equal model flexibility.
+The secondary approximation analysis will compare classical and quantum models at the same predictive-memory budget, measured by their respective entropy costs rather than by equal rank or equal parameter count. For each memory budget, model settings will be selected using training participants only and predictive performance will be evaluated on held-out participants. Rank and parameter count will be reported descriptively, but neither will be treated as equivalent to predictive memory.
 
 ### 8.3 Label permutation
 
