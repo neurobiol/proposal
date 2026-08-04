@@ -327,7 +327,7 @@ Definitions:
 
 - $G$ is the Gram matrix.
 - $G_{rs}$ is the entry in row $r$, column $s$.
-- The matrix must be Hermitian, meaning $G_{rs}=G_{sr}^{*}$, where $*$ denotes complex conjugation.
+- The matrix must be Hermitian, meaning $G_{rs}=G_{sr}^{\*}$, where $\*$ denotes complex conjugation.
 - It must be positive semidefinite, meaning it cannot assign a negative squared length to any vector.
 - Its diagonal entries must equal one because every state is normalized.
 
