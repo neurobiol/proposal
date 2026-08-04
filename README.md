@@ -32,7 +32,8 @@ The word **memory** in this document means information stored by a mathematical 
 
 - **$AP_{30}$**: a motor-threshold measure obtained with a 30-microsecond anterior-posterior TMS pulse.
 - **TMS**: transcranial magnetic stimulation.
-- **RMSE**: root mean square error, a measure of the size of prediction errors.
+- **RMSE**: root mean square error, the trial-level measure of how closely the participant followed the target.
+- **RMSPE**: root mean squared prediction error, the difference between predicted and observed trial-level RMSE.
 - **NLL**: negative log-likelihood, a measure of how much probability a model assigns to observed outcomes.
 - **Hidden state**: an internal model variable that is inferred rather than directly measured.
 - **Predictive state**: a summary of past observations used to predict future observations.
@@ -51,7 +52,7 @@ For participant $n$ and trial $t$:
 
 - $n$ labels the participant.
 - $t$ labels the trial number.
-- $x_{nt}$ is the input or context known before the trial. It may include session, block, instruction condition, waveform type, and AP-sensitive motor-cortical response category.
+- $x_{nt}$ contains information known before the trial. Instruction condition and AP-sensitive response category are baseline information, while session, block, trial position, and movement-segment type (random or repeated) may change across trials.
 - $y_{nt}$ is the observed outcome. The main outcome is standardized root mean square error, or RMSE.
 - $h_{nt}$ is the complete observed history before trial $t$.
 
@@ -83,12 +84,12 @@ Delayed retention is predicted using only information available at the end of th
 
 All models are evaluated on participants who were not used to fit the model.
 
-### 3.1 Root mean square error
+### 3.1 Root mean square prediction error
 
 Prediction error is measured by
 
 $$
-\mathrm{RMSE}=\sqrt{\frac{1}{N}\sum_{i=1}^{N}(y_i-\hat y_i)^2}.
+\mathrm{RMSPE}=\sqrt{\frac{1}{N}\sum_{i=1}^{N}(y_i-\hat y_i)^2}.
 $$
 
 Definitions:
@@ -101,7 +102,7 @@ Definitions:
 - Squaring makes positive and negative errors contribute equally.
 - The square root returns the result to the same units as the outcome.
 
-Lower RMSE means more accurate numerical predictions.
+Lower RMSPE means more accurate prediction of trial-level tracking RMSE.
 
 ### 3.2 Negative log-likelihood
 
@@ -125,6 +126,8 @@ Lower NLL means that the model assigns more probability to outcomes that actuall
 
 Calibration asks whether predicted probabilities match observed frequencies. For example, among outcomes assigned a probability near 0.7, an event should occur about 70 percent of the time. Calibration will be reported as a secondary measure.
 
+NLL will be the primary held-out model-comparison measure. RMSPE and calibration will be secondary measures.
+
 ---
 
 ## 4. Classical model hierarchy
@@ -144,7 +147,7 @@ Definitions:
 - $y_{nt}$ is the observed outcome for participant $n$ on trial $t$.
 - $\beta_0$ is the overall intercept, or average starting level.
 - $b_n$ is a participant-specific intercept that captures stable differences between participants.
-- $\mathbf z_{nt}$ is a vector containing known predictors, such as trial number, instruction, waveform type, and AP context.
+- $\mathbf z_{nt}$ is a vector containing known predictors, such as trial position, instruction, movement-segment type, and AP context.
 - $\boldsymbol{\beta}$ is the vector of coefficients associated with $\mathbf z_{nt}$.
 - The superscript $\mathsf T$ means transpose, so $\boldsymbol{\beta}^{\mathsf T}\mathbf z_{nt}$ is the weighted sum of the predictors.
 - $L$ is the number of earlier trials included.
@@ -222,7 +225,7 @@ Definitions:
 - $\vec Y$ is a possible future sequence of outputs.
 - $P(\vec Y\mid \vec X,h)$ is the probability distribution over future outputs given future inputs and history $h$.
 
-All histories in one equivalence class form one **causal state**. In finite human data, exact equality over an unlimited future cannot be established. The empirical model therefore uses pre-specified outcomes: next-trial RMSE, end-of-block performance, and delayed retention. Any minimality claim is limited to these outcomes, the observed protocol, and the supported model class.
+All histories in one equivalence class form one **causal state**. Since finite human data cannot establish exact predictive equivalence over every possible future, C3 will be treated as an empirical predictive-state approximation rather than an exact reconstructed epsilon-transducer. Histories will be grouped when their training-data predictions are sufficiently similar for three prespecified targets: next-trial tracking error, end-of-practice performance, and delayed retention. Any minimality claim is limited to these targets, the observed protocol, and the supported model class.
 
 The input-conditioned transition probabilities are
 
@@ -237,6 +240,8 @@ Definitions:
 - $x$ is the current input.
 - $y$ is the observed output category.
 - $T_{ss'}^{y\mid x}$ is the probability of observing output $y$ and moving to state $s'$, given current state $s$ and input $x$.
+
+The fitted state transitions will be constrained to be unifilar. This means that once the current state, current input, and observed output are known, the next state is determined.
 
 ---
 
@@ -290,7 +295,9 @@ Definitions:
 
 The use of quantum states is a mathematical representation. It does not assume that neurons or motor cortex perform the proposed calculation physically.
 
-### 6.2 State construction for each input
+### 6.2 Quantum-state construction
+
+The quantum representation is constructed only after C3 has been fitted. It is not trained as a separate predictor. The transition probabilities estimated by C3 determine the quantum memory states and their overlaps.
 
 For classical state $s$ and input $x$, define
 
@@ -316,6 +323,8 @@ Definitions:
 - $x\in\mathcal X$ means that $x$ is one member of that set.
 - $\bigotimes$ means the tensor product over all inputs.
 - The result is one quantum memory state that contains the predictive response to every allowed input.
+
+This construction fixes the overlaps between the quantum memory states from the fitted classical transitions. No separate overlap parameters are optimized. Reproducing the fitted classical process is therefore part of the construction. The empirical question is whether the resulting overlap produces a stable reduction in average predictive memory.
 
 ### 6.3 Overlap between quantum states
 
@@ -407,7 +416,7 @@ A held-out participant never influences the bin boundaries or model settings use
 
 ## 8. Controls
 
-### 8.1 Fully distinct-state control
+### 8.1 Orthogonal-state implementation control
 
 All off-diagonal overlaps are set to zero:
 
@@ -418,7 +427,7 @@ Definitions:
 - $s\neq s'$ means the two state labels are different.
 - Off-diagonal entries compare different states.
 
-This control keeps the fitted transition probabilities but removes quantum overlap. It must recover the classical predictive memory.
+This control keeps the fitted transition probabilities but removes quantum overlap. It must recover the classical predictive memory. This is an implementation check implied by the mathematical construction, not an independent biological hypothesis.
 
 ### 8.2 Matched-memory approximation comparison
 
@@ -436,23 +445,31 @@ Synthetic data will be generated from each candidate model class. The full analy
 
 ## 9. Decision rules
 
-A primary quantum memory advantage requires both conditions below:
+C3 will proceed to quantum encoding only if both conditions below are met:
 
-1. The quantum representation reproduces the selected classical process's output probabilities within numerical tolerance.
+1. Its mean participant-held-out NLL is within one standard error of the lowest mean participant-held-out NLL among C0--C3.
+2. Its state structure remains stable under participant resampling.
+
+A primary quantum memory advantage then requires both conditions below:
+
+1. The quantum representation reproduces C3's output probabilities and successor-state dynamics with a maximum absolute error below $10^{-8}$.
 2. The 95 percent participant-bootstrap confidence interval for
 
-$$\overline{C}_{\mu}-\overline{C}_q$$
+$$
+\overline{C}_{\mu}-\overline{C}_q
+$$
 
 lies entirely above zero.
 
 Definitions:
 
-- $\overline{C}_{\mu}-\overline{C}_q$ is the average reduction in predictive memory.
-- A positive value means the quantum representation uses less memory.
-- A participant bootstrap repeatedly resamples whole participants, not individual trials.
-- A 95 percent confidence interval summarizes uncertainty across these resamples.
+- $\overline{C}_{\mu}-\overline{C}_q$ is the reduction in predictive memory averaged across the analyzed trials.
+- A positive value means that the quantum representation uses less predictive memory.
+- A participant bootstrap repeatedly resamples complete participants, not individual trials.
+- A 95 percent confidence interval summarizes uncertainty across these resampled datasets.
+- The $10^{-8}$ threshold is a numerical implementation check, not evidence of quantum advantage.
 
-Held-out NLL and RMSE are used first to identify a credible classical source process. A memory reduction in a poorly predicting model is not treated as an advantage.
+NLL is the primary measure used to compare the four classical models. RMSPE and calibration are secondary measures. The classical--quantum comparison concerns average predictive-memory cost only after reproduction of the same fitted process has been confirmed.
 
 If the primary criterion is not met, the conclusion is that the available data do not support a quantum memory reduction at the tested resolution.
 
@@ -461,7 +478,7 @@ If the primary criterion is not met, the conclusion is that the available data d
 ## 10. Validation and leakage prevention
 
 - Every trial from one participant remains in the same cross-validation fold.
-- History length, state number, output bins, and regularization are chosen using training participants only.
+- Within each outer training fold, an inner participant-level cross-validation selects history length, output representation, state number, and regularization. No information from an outer test participant is used in these choices.
 - Delayed-retention outcomes are not used to create predictors available before the delay.
 - Bootstrap resampling is performed by participant.
 - State labels are aligned across resampled fits before transitions are compared.
@@ -475,24 +492,15 @@ Right-censored means that the true threshold is known only to exceed the largest
 
 Before interpreting real-data results, the software must pass the following checks:
 
-1. Every transition probability is non-negative.
+1. Every fitted transition probability is non-negative.
 2. Transition probabilities sum to one for every current state and input.
-3. The Gram matrix is Hermitian, positive semidefinite, and has ones on its diagonal.
-4. The quantum simulator reproduces the fitted classical output probabilities within numerical tolerance.
-5. Every density matrix has trace one and non-negative eigenvalues.
-6. Forcing the quantum states to be fully distinct recovers classical predictive memory.
-7. Synthetic processes with known history dependence and known state overlap are recovered correctly.
-8. No-history, fully distinct-state, and single-state controls produce no artificial advantage.
-
-## Numerical implementation checks
-
-The implementation will verify that:
-
-1. every quantum state is normalized;
-2. the Gram matrix is Hermitian and positive semidefinite;
-3. the quantum representation reproduces the fitted classical output probabilities;
-4. the quantum representation reproduces the fitted successor-state dynamics; and
-5. the orthogonal-state control recovers the classical memory value.
+3. Every constructed quantum memory state is normalized.
+4. The Gram matrix is Hermitian, positive semidefinite, and has ones on its diagonal.
+5. The quantum representation reproduces C3's output probabilities and successor-state dynamics with a maximum absolute error below $10^{-8}$.
+6. Every density matrix has trace one and non-negative eigenvalues.
+7. Forcing the quantum states to be orthogonal recovers $\overline{C}_q=\overline{C}_{\mu}$.
+8. Synthetic processes with known history dependence and known state overlap are recovered correctly.
+9. No-history, orthogonal-state, and single-state controls produce no artificial quantum-memory advantage.
 
 ---
 
