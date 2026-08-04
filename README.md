@@ -1,5 +1,5 @@
 # Mathematical guide 
-## Quantum-Inspired Predictive Modeling of Human Sensorimotor Learning and Retention
+## Quantum-Inspired Machine Learning for Predicting Human Sensorimotor Learning and Retention
 
 ### Master of Science Thesis Proposal for Yashine H. Goolam Hossen
 Principal Investigator: Prof. Travis J. A. Craddock
