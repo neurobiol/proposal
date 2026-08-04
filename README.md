@@ -472,6 +472,16 @@ Before interpreting real-data results, the software must pass the following chec
 7. Synthetic processes with known history dependence and known state overlap are recovered correctly.
 8. No-history, fully distinct-state, and single-state controls produce no artificial advantage.
 
+## Numerical implementation checks
+
+The implementation will verify that:
+
+1. every quantum state is normalized;
+2. the Gram matrix is Hermitian and positive semidefinite;
+3. the quantum representation reproduces the fitted classical output probabilities;
+4. the quantum representation reproduces the fitted successor-state dynamics; and
+5. the orthogonal-state control recovers the classical memory value.
+
 ---
 
 ## 12. Interpretation of possible results
