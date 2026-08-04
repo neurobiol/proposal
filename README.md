@@ -1,10 +1,15 @@
 # Mathematical guide 
 ## Quantum-Inspired Machine Learning for Predicting Human Sensorimotor Learning and Retention
 
-### Master of Science Thesis Proposal for Yashine H. Goolam Hossen
+### Master of Science Thesis Proposal 
+Student Name: Yashine H. Goolam Hossen
+
 Principal Investigator: Prof. Travis J. A. Craddock
+
 Department of Biology, University of Waterloo
+
 Waterloo, Ontario, Canada
+
 August 3, 2026
 
 > **Viewing note:** GitHub renders the equations in the normal file view or Preview. The Raw view and some generic text viewers show the LaTeX source instead.
