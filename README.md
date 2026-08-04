@@ -1,5 +1,10 @@
 # Mathematical guide 
-## Quantum-Inspired Machine Learning for Predicting Human Sensorimotor Learning and Retention
+
+## Purpose 
+
+This document explains the mathematics used in the proposal. 
+
+## Quantum-Inspired Machine Learning for Predicting Human Sensorimotor Learning and Retention 
 
 ### Master of Science Thesis Proposal 
 Student Name: Yashine H. Goolam Hossen
@@ -14,9 +19,7 @@ August 3, 2026
 
 > **Viewing note:** GitHub renders the equations in the normal file view or Preview. The Raw view and some generic text viewers show the LaTeX source instead.
 
-## 1. Purpose of this guide
-
-This document explains the mathematics used in the proposal **Quantum-Inspired Machine Learning for Predicting Human Sensorimotor Learning and Retention**. 
+## 1. Overview 
 
 The central question is:
 
