@@ -16,7 +16,7 @@ August 3, 2026
 
 ## 1. Purpose of this guide
 
-This document explains the mathematics used in the proposal **Quantum Predictive Modelling of Human Sensorimotor Learning**. 
+This document explains the mathematics used in the proposal **Quantum-Inspired Machine Learning for Predicting Human Sensorimotor Learning and Retention**. 
 
 The central question is:
 
@@ -301,7 +301,8 @@ The quantum representation is constructed only after C3 has been fitted. It is n
 
 For classical state $s$ and input $x$, define
 
-$$\lvert\sigma_s^x\rangle = \sum_{y,s'}\sqrt{T_{ss'}^{y\mid x}}\,\lvert y\rangle\lvert s'\rangle.$$
+$$\lvert\sigma_s^x\rangle = \sum_{y,s'}
+\sqrt{T_{ss'}^{y\mid x}}\,\lvert y\rangle\lvert s'\rangle.$$
 
 Definitions:
 
