@@ -1,0 +1,12 @@
+{
+  "C_mu_bits": 1.9764922805159064,
+  "C_q_qubits": 1.9377024162150753,
+  "memory_gap": 0.03878986430083109,
+  "gram_min_eigenvalue": 0.7037641436901325,
+  "gram_max_diagonal_error": 0.0,
+  "transition_max_normalization_error": 0.0,
+  "rho_rank": 4,
+  "bootstrap_gap_ci_low": 0.02817552068625468,
+  "bootstrap_gap_median": 0.03826098551448942,
+  "bootstrap_gap_ci_high": 0.053189669192949526
+}

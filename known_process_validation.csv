@@ -1,0 +1,4 @@
+process,C_mu_bits,C_q_qubits,memory_gap,gram_min_eigenvalue,max_transition_error
+overlapping_futures,1.5812908992306927,0.5603296486197593,1.0209612506109333,0.0013682527235554262,0.0
+orthogonal_futures,1.5812908992306927,1.5812908992306924,2.220446049250313e-16,1.0,0.0
+one_state_null,-0.0,-0.0,0.0,1.0,0.0
