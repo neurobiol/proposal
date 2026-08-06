@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this software using the citation below."
+title: "Memory-Efficient Modeling of Human Sensorimotor Learning: Preliminary Reproducible Analysis Pipeline"
+version: 0.1.0
+type: software
+authors:
+  - given-names: "Yashine H."
+    family-names: "Goolam Hossen"
+date-released: 2026-08-06
+repository-code: "https://github.com/neurobiol/proposal"
